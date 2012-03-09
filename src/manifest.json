@@ -1,0 +1,13 @@
+{
+   "background_page": "background.html",
+   "description": "Simply right click where you need a disposable email address, and your temporary inbox will appear in the next tab.",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "48": "icon48.png"
+   },
+   "name": "Easy disposable email address",
+   "options_page": "options.html",
+   "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
+   "version": "1.0"
+}

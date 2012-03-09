@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Disposable email</title>
+</head>
+<body>
+<table align="center" border="0">
+<tr><td><img src="icon128.png"><td><h1>&nbsp;&nbsp;&nbsp;&nbsp;Disposable email settings</h1>
+</table>
+<center><form>Default provider:&nbsp;</form></center>
+<script src="providers.js"></script>
+<script>
+var current = localStorage["provider"];
+var select = document.createElement("select");
+for(var i = 0; i < providers.length; i++)
+{
+  var option = document.createElement("option");
+  option.value = i;
+  if( current && current == i )
+    option.selected = true;
+  option.appendChild(document.createTextNode(providers[i]["name"]));
+  select.appendChild(option); 
+}
+select.addEventListener('change',function (e) {
+  localStorage["provider"] = e.target.value;
+},true);
+document.forms[0].appendChild(select);
+</script>
+</body>
+</html>
