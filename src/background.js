@@ -47,7 +47,11 @@ function genericOnClick(info, tab) {
   if( !res )
     for(var i in providers)
       if( (res = getAddress(providers[i], tab["index"])) )
+      {
+        // New default is the first one that works
+        localStorage["provider"] = i;
         break;
+      }
   
   // Failure - none worked
   if( !res )
