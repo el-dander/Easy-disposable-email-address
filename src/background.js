@@ -20,10 +20,14 @@ function getAddress(provider, curIndex)
  
   // Check chosen site is working, if not return false
   var xhReq = new XMLHttpRequest();
-  xhReq.open("GET", inbox_url, false);
-  xhReq.send(null);
-  if( xhReq.status != 200 )
+  try {
+    xhReq.open("GET", inbox_url, false);
+    xhReq.send(null);
+    if( xhReq.status != 200 )
+      return false;
+  } catch(e) {
     return false;
+  }
  
   // Inject address into textbox
   var js = "if (document.activeElement != undefined) document.activeElement.value = '" + email_address + "'";
