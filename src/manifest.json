@@ -1,5 +1,8 @@
 {
-   "background_page": "background.html",
+   "manifest_version": 2,
+   "background": {
+     "scripts": [ "providers.js", "background.js" ]
+   },
    "description": "Simply right click where you need a disposable email address, and your temporary inbox will appear in the next tab.",
    "icons": {
       "128": "icon128.png",
@@ -9,5 +12,5 @@
    "name": "Easy disposable email address",
    "options_page": "options.html",
    "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
-   "version": "1.1"
+   "version": "1.2"
 }
