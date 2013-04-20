@@ -40,28 +40,39 @@ function getAddress(provider, curIndex)
 }
 
 function genericOnClick(info, tab) {
-  var def = localStorage["provider"];
-  var res = false;
+  chrome.permissions.request({
+    origins: ["http://www.dispostable.com/", "http://mailinator.com/", "http://mailcatch.com/", "https://harakirimail.com/"]
+  }, function(granted) {
+    if (granted) {
+      var def = localStorage["provider"];
+      var res = false;
   
-  // Try default provider
-  if( def )
-    res = getAddress(providers[def], tab["index"]);
+      // Try default provider
+      if( def )
+        res = getAddress(providers[def], tab["index"]);
 
-  // If no default, or default failed, try the others
-  if( !res )
-    for(var i in providers)
-      if( (res = getAddress(providers[i], tab["index"])) )
-      {
-        // New default is the first one that works
-        localStorage["provider"] = i;
-        break;
-      }
+      // If no default, or default failed, try the others
+      if( !res )
+        for(var i in providers)
+          if( (res = getAddress(providers[i], tab["index"])) )
+          {
+            // New default is the first one that works
+            localStorage["provider"] = i;
+            break;
+          }
   
-  // Failure - none worked
-  if( !res )
-    chrome.tabs.executeScript(null, {
-      code: "alert('Unable to create disposable email address, no sites reachable')"
-    });
+      // Failure - none worked
+      if( !res )
+        chrome.tabs.executeScript(null, {
+          code: "alert('Unable to create disposable email address, no sites reachable')"
+        });
+
+    } else {
+        chrome.tabs.executeScript(null, {
+          code: "alert('Unable to create disposable email address, as need access to disposable provider websites')"
+        });
+    }
+  });
 }
 
 chrome.contextMenus.onClicked.addListener(genericOnClick);

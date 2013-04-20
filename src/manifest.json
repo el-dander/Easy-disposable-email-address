@@ -12,6 +12,7 @@
    },
    "name": "Easy disposable email address",
    "options_page": "options.html",
-   "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
+   "permissions": [ "contextMenus", "activeTab" ],
+   "optional_permissions": [ "http://www.dispostable.com/", "http://mailinator.com/", "http://mailcatch.com/", "https://harakirimail.com/" ],
    "version": "1.3"
 }
