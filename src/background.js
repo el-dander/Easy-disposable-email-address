@@ -64,5 +64,9 @@ function genericOnClick(info, tab) {
     });
 }
 
-var id = chrome.contextMenus.create(
-  {"title": "Insert disposable address", "contexts":["editable"], "onclick": genericOnClick});
+chrome.contextMenus.onClicked.addListener(genericOnClick);
+
+chrome.runtime.onInstalled.addListener(function() {
+  chrome.contextMenus.create(
+    {"title": "Insert disposable address", "contexts":["editable"], "id": "click"});
+});
