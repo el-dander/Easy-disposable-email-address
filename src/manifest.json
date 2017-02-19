@@ -14,5 +14,5 @@
    "options_page": "options.html",
    "permissions": [ "contextMenus", "activeTab" ],
    "optional_permissions": [ "http://www.dispostable.com/", "http://mailinator.com/", "http://mailcatch.com/", "https://harakirimail.com/" ],
-   "version": "1.4"
+   "version": "1.5"
 }
